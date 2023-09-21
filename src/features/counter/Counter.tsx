@@ -10,11 +10,13 @@ import {
   selectCount,
 } from './counterSlice';
 import styles from './Counter.module.css';
+import { selectStatus } from '../status/statusSlice';
 
 export function Counter() {
   const count = useAppSelector(selectCount);
+  const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  const [incrementAmount, setIncrementAmount] = useState('3');
 
   const incrementValue = Number(incrementAmount) || 0;
 
@@ -28,7 +30,8 @@ export function Counter() {
         >
           -
         </button>
-        <span className={styles.value}>{count}</span>
+        <p className={styles.value}>{count}</p>
+        <p className={styles.value}>{status}</p>
         <button
           className={styles.button}
           aria-label="Increment value"
